@@ -1,6 +1,6 @@
 'use client';
 import { cn } from '@/utils/cn';
-import React, { useEffect, useState } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 import { z } from 'zod';
 
 const ButtonSchema = z
@@ -20,7 +20,7 @@ const ButtonSchema = z
     color: true,
   });
 
-type SchemaProps = z.infer<typeof ButtonSchema>;
+type SchemaProps = z.infer<typeof ButtonSchema> & ButtonHTMLAttributes<HTMLButtonElement>;
 
 export const Button = ({
   children,
@@ -37,7 +37,7 @@ export const Button = ({
 
   return (
     <button
-      className={cn(colors, position, className)}
+      className={cn(colors, position, className, 'disabled:bg-slate-300 disabled:text-gray-400')}
       style={{
         width,
         height,

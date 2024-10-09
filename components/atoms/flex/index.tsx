@@ -10,6 +10,7 @@ const FlexSchema = z
   })
   .partial({
     className: true,
+    direction: true
   });
 
 type SchemaProps = z.infer<typeof FlexSchema>;

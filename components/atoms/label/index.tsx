@@ -5,7 +5,7 @@ import { z } from 'zod';
 const LabelSchema = z
   .object({
     children: z.any(),
-    color: z.string(),
+    color: z.enum(['primary', 'default', 'midnight']),
     size: z.string(),
     className: z.string(),
   })
@@ -22,10 +22,12 @@ export const Label = ({
   color = 'default',
   size = '16px',
   className,
+  ...props
 }: SchemaProps) => {
   const colors = {
     primary: 'text-primary-10',
     default: 'text-white',
+    midnight: 'text-midnight'
   }[color];
 
   return (
@@ -33,7 +35,8 @@ export const Label = ({
       className={cn(colors, className)}
       style={{
         fontSize: size,
-      }}>
+      }}
+      {...props}>
       {children}
     </div>
   );

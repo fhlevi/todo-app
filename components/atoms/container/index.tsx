@@ -9,10 +9,8 @@ type SchemaProps = z.infer<typeof ContainerSchema>;
 
 export const Container = ({ children }: SchemaProps) => {
   return (
-    <div className="bg-background py-8 h-screen w-full">
-        <div className="max-w-[421px] h-full mx-auto">
-            {children}
-        </div>
+    <div className="py-8 h-full w-full">
+      <div className="max-w-[421px] mx-auto h-full">{children}</div>
     </div>
   );
 };

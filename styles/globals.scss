@@ -15,3 +15,9 @@
     --bg-card: #1D1825;
   }
 }
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  height: 100vh;
+}
