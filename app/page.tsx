@@ -13,7 +13,7 @@ import { useToasterWithData } from '@/hooks/use-toaster';
 import { useTodo } from '@/hooks/use-todo';
 import { FieldValues } from 'react-hook-form';
 
-export default function Home() {
+export default function HomePage() {
   const { createTodo, todoList, deleteTodo, updateTodo } = useTodo();
 
   const addDialog = useDialogWithData();
