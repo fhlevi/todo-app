@@ -13,7 +13,7 @@ export const useTodo = () => {
 
   const createTodo = (
     formVal: FieldValues,
-    callback: (date: string, items: any[]) => void,
+    callback: (date: string) => void,
   ) => {
     const arrPayload: Array<TodoItemSchema> = [...todoList];
 
@@ -26,36 +26,42 @@ export const useTodo = () => {
     arrPayload.push(payload);
 
     saveToLocalStorage(arrPayload);
-    callback(payload.date, arrPayload);
+    setTodoList(arrPayload);
+    callback(payload.date);
   };
 
   const updateTodo = (
     formVal: FieldValues,
-    callback: (date: string, items: any[]) => void,
+    callback: (date: string) => void,
   ) => {
     const storedTodoList = localStorage.getItem('todo-list');
     const arrPayload = storedTodoList ? JSON.parse(storedTodoList) : [];
-    
+
     const index = arrPayload.findIndex(
       (item: TodoItemSchema) => item.id === formVal.id,
     );
 
     if (index !== -1) {
       arrPayload[index].todo = formVal.todo;
-      
+
       saveToLocalStorage(arrPayload);
-      callback(arrPayload[index].date, arrPayload);
+      setTodoList(arrPayload);
+      callback(arrPayload[index].date);
     }
   };
 
-  const deleteTodo = (id: string) => {
+  const deleteTodo = (id: string, callback: (date: string) => void) => {
     setTodoList((prev: Array<TodoItemSchema>) => {
       const arrPayload = [...prev];
       const index = arrPayload.findIndex((item) => item.id === id);
 
       if (index !== -1) {
+        const date = arrPayload[index].date
+        
         arrPayload.splice(index, 1);
+
         saveToLocalStorage(arrPayload);
+        callback(date)
       }
 
       return arrPayload;
@@ -72,7 +78,6 @@ export const useTodo = () => {
     createTodo,
     updateTodo,
     todoList,
-    setTodoList,
     deleteTodo,
   };
 };

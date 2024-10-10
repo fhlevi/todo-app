@@ -2,49 +2,42 @@ import { Button } from '@/components/atoms/button';
 import { Close, Dialog, Title } from '@/components/atoms/dialog';
 import { Flex } from '@/components/atoms/flex';
 import { Label } from '@/components/atoms/label';
-import { useForm, FieldValues } from 'react-hook-form';
-import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
+import React from 'react';
 import { z } from 'zod';
-import fs from 'fs';
-import { ItemSchema } from '@/types/todo';
+import { DialogWithData } from '@/types/dialog';
 
 const TodoDialogSchema = z.object({
-  open: z.boolean(),
-  onClose: z.function(),
-  item: ItemSchema,
+  dialog: DialogWithData,
   onTodoSubmit: z.function().args(z.any()),
 });
 
 type SchemaProps = z.infer<typeof TodoDialogSchema>;
 
-export const TodoDialog = ({
-  open,
-  onClose,
-  onTodoSubmit,
-  item,
-}: SchemaProps) => {
-  const { register, handleSubmit, reset, watch } = useForm({
+export const TodoDialog = ({ dialog, onTodoSubmit }: SchemaProps) => {
+  const { props, data = {} } = dialog;
+
+  const { register, handleSubmit, watch } = useForm({
     values: {
-      ...item,
+      ...data,
     },
   });
 
-  useEffect(() => {
-    reset();
-  }, [open]);
-
   const todoValue = watch('todo');
+  
   const isDisabled = !todoValue;
-  const isEdit = !!item.id
+  const isEdit = !!data?.id;
 
   return (
     <Dialog
       className="w-[421px] rounded-lg p-4"
-      open={open}
-      onOpenChange={onClose}>
+      open={props.isOpen}
+      onOpenChange={props.onRequestClose}>
       <header className="flex justify-between items-center mb-4">
-        <Title className="font-bold">{isEdit ? 'Edit Todo' : 'Tambah Todo'}</Title>
-        <Close onClick={onClose} />
+        <Title className="font-bold">
+          {isEdit ? 'Edit Todo' : 'Tambah Todo'}
+        </Title>
+        <Close onClick={props.onRequestClose} />
       </header>
 
       <form onSubmit={handleSubmit(onTodoSubmit)}>

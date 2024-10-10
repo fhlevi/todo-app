@@ -11,6 +11,7 @@ const ButtonSchema = z
     height: z.string(),
     width: z.string(),
     className: z.string(),
+    onClick: z.function().returns(z.void())
   })
   .partial({
     className: true,
@@ -18,6 +19,7 @@ const ButtonSchema = z
     height: true,
     width: true,
     color: true,
+    onClick: true
   });
 
 type SchemaProps = z.infer<typeof ButtonSchema> & ButtonHTMLAttributes<HTMLButtonElement>;
@@ -29,6 +31,7 @@ export const Button = ({
   position,
   width,
   height,
+  onClick,
   ...props
 }: SchemaProps) => {
   const colors = {
@@ -41,6 +44,10 @@ export const Button = ({
       style={{
         width,
         height,
+      }}
+      onClick={(e) => {
+        e.stopPropagation();
+        onClick && onClick();
       }}
       {...props}>
       {children}

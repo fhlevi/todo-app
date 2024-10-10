@@ -8,8 +8,6 @@ const RootSchema = z.object({
 type SchemaProps = z.infer<typeof RootSchema>;
 
 export const Root = (props: SchemaProps) => {
-  RootSchema.parse(props);
-
   const { children } = props;
 
   return (
