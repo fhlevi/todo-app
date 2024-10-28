@@ -1,4 +1,4 @@
-# Front-end React + Vite
+# Todo App React + Vite
 
 [React.js](https://react.dev/) 
 [Vite](https://vitejs.dev/) 
