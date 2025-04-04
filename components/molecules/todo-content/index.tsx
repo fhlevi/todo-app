@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { Flex } from '@/components/atoms/flex';
-import { Label } from '@/components/atoms/label';
+import { Flex } from '@components/atoms/flex';
+import { Label } from '@components/atoms/label';
 
 const TodoContentSchema = z.object({
   text: z.string(),

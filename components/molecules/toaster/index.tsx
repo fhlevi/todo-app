@@ -1,5 +1,5 @@
-import { Close, Description, Title, Toast } from '@/components/atoms/toast';
-import { ToasterWithDataSchema } from '@/types/toaster';
+import { Close, Description, Title, Toast } from '@components/atoms/toast';
+import { ToasterWithDataSchema } from '@types/toaster';
 
 export const Toaster = ({ data, props }: ToasterWithDataSchema) => {
   return (

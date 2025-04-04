@@ -1,5 +1,5 @@
-import { FieldValueScheman, TodoItemSchema } from '@/types/todo';
-import { prettyDate } from '@/utils/helper';
+import { FieldValueScheman, TodoItemSchema } from '@type/todo';
+import { prettyDate } from '@utils/helper';
 import { useEffect, useState } from 'react';
 import { v4 } from 'uuid';
 

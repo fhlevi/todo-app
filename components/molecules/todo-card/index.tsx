@@ -1,5 +1,5 @@
-import { Card } from '@/components/atoms/card';
-import { Flex } from '@/components/atoms/flex';
+import { Card } from '@components/atoms/card';
+import { Flex } from '@components/atoms/flex';
 import { z } from 'zod';
 
 const TodoCardSchema = z.object({

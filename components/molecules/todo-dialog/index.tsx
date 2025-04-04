@@ -1,10 +1,10 @@
-import { Button } from '@/components/atoms/button';
-import { Close, Dialog, Title } from '@/components/atoms/dialog';
-import { Flex } from '@/components/atoms/flex';
-import { Label } from '@/components/atoms/label';
+import { Button } from '@components/atoms/button';
+import { Close, Dialog, Title } from '@components/atoms/dialog';
+import { Flex } from '@components/atoms/flex';
+import { Label } from '@components/atoms/label';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { DialogWithData } from '@/types/dialog';
+import { DialogWithData } from '@types/dialog';
 import { useEffect } from 'react';
 
 const TodoDialogSchema = z.object({

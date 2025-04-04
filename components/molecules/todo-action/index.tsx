@@ -1,6 +1,6 @@
 import { z } from 'zod';
-import { Flex } from '@/components/atoms/flex';
-import { Icon } from '@/components/atoms/icon';
+import { Flex } from '@components/atoms/flex';
+import { Icon } from '@components/atoms/icon';
 
 const TodoActionSchema = z.object({
     onDelete: z.function(),

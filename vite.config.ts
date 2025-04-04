@@ -10,6 +10,12 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, '.'),
+      '@components': path.resolve(__dirname, './components'),
+      '@hooks': path.resolve(__dirname, './hooks'),
+      '@utils': path.resolve(__dirname, './utils'),
+      '@type': path.resolve(__dirname, './types'),
+      '@styles': path.resolve(__dirname, './styles'),
+      '@assets': path.resolve(__dirname, './assets'),
     }
   },
   plugins: [react()],

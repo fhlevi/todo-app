@@ -1,15 +1,15 @@
-import { Button } from '@/components/atoms/button';
-import { Card } from '@/components/atoms/card';
-import { Container } from '@/components/atoms/container';
-import { Flex } from '@/components/atoms/flex';
-import { Label } from '@/components/atoms/label';
-import { ScrollArea } from '@/components/atoms/scroll-area';
-import { Toaster } from '@/components/molecules/toaster';
-import { TodoDialog } from '@/components/molecules/todo-dialog';
-import { TodoList } from '@/components/organisms/todo-list';
-import { useDialogWithData } from '@/hooks/use-dialog-with-data';
-import { useToasterWithData } from '@/hooks/use-toaster';
-import { useTodo } from '@/hooks/use-todo';
+import { Button } from '@components/atoms/button';
+import { Card } from '@components/atoms/card';
+import { Container } from '@components/atoms/container';
+import { Flex } from '@components/atoms/flex';
+import { Label } from '@components/atoms/label';
+import { ScrollArea } from '@components/atoms/scroll-area';
+import { Toaster } from '@components/molecules/toaster';
+import { TodoDialog } from '@components/molecules/todo-dialog';
+import { TodoList } from '@components/organisms/todo-list';
+import { useDialogWithData } from '@hooks/use-dialog-with-data';
+import { useToasterWithData } from '@hooks/use-toaster';
+import { useTodo } from '@hooks/use-todo';
 import { FieldValues } from 'react-hook-form';
 
 function App() {
@@ -80,9 +80,7 @@ function App() {
       </Card>
 
       <TodoDialog dialog={addDialog} onTodoSubmit={onTodoSubmit} />
-
       <TodoDialog dialog={updateDialog} onTodoSubmit={onTodoUpdate} />
-
       <Toaster {...toaster} />
     </Container>
   );

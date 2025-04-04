@@ -2,7 +2,7 @@ import { forwardRef, ElementRef, ComponentPropsWithoutRef } from 'react';
 import * as Primitive from '@radix-ui/react-dialog';
 import { z } from 'zod';
 import { Icon } from '../icon';
-import { cn } from '@/utils/cn';
+import { cn } from '@utils/cn';
 
 const DialogSchema = z
   .object({

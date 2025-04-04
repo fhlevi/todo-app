@@ -22,7 +22,13 @@
 
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@components/*": ["./components/*"],
+      "@hooks/*": ["./hooks/*"],
+      "@utils/*": ["./utils/*"],
+      "@type/*": ["./types/*"],
+      "@styles/*": ["./styles/*"],
+      "@assets/*": ["./assets/*"],
     }
   },
   "include": ["app", "vite-env.d.ts", "**/*.ts", "**/*.tsx"]

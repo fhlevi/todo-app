@@ -1,8 +1,8 @@
-import { Flex } from '@/components/atoms/flex';
-import { TodoAction } from '@/components/molecules/todo-action';
-import { TodoCard } from '@/components/molecules/todo-card';
-import { TodoContent } from '@/components/molecules/todo-content';
-import { ItemSchema, TodoItemSchema } from '@/types/todo';
+import { Flex } from '@components/atoms/flex';
+import { TodoAction } from '@components/molecules/todo-action';
+import { TodoCard } from '@components/molecules/todo-card';
+import { TodoContent } from '@components/molecules/todo-content';
+import { ItemSchema, TodoItemSchema } from '@types/todo';
 import { z } from 'zod';
 
 const TodoListSchema = z.object({
