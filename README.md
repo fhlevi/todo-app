@@ -1,24 +1,59 @@
-# Todo App React + Vite
+# 📝 Todo App
 
-[React.js](https://react.dev/) 
-[Vite](https://vitejs.dev/) 
+Aplikasi Todo yang dibangun dengan React, Vite, dan Tailwind CSS untuk membantu Anda mengelola tugas harian secara efisien. Aplikasi ini memungkinkan pengguna untuk menambahkan, mengedit, menyelesaikan, dan menghapus tugas dengan antarmuka yang responsif dan intuitif.
 
-[Demo](https://todo-alpha-list.vercel.app/)
+---
 
-## Getting Started
+## 🚀 Demo
 
-1. Clone this repo.
-2. Run `npm install` to install dependencies.
-3. Run `npm run dev`.
+Lihat aplikasi yang berjalan di: [todo-alpha-list.vercel.app](https://todo-alpha-list.vercel.app/)
 
-## Scripts
+---
 
-- `npm run dev` - Run in development mode
-- `npm run build` - Build the application for production
+## 🛠️ Teknologi yang Digunakan
 
-## File Structure
+- **React**
+- **Vite**
+- **TypeScript**
+- **Tailwind CSS + Radix UI**
+- **Zod**
+- **Clsx** (ClassName Utility)
+- **Vercel** (untuk deployment)
 
-```raw
+---
+
+## 📦 Instalasi
+
+1. **Klon repositori:**
+
+```bash
+git clone https://github.com/fhlevi/todo-app.git
+cd todo-app
+```
+
+2. **Instal dependensi:**
+
+```bash
+pnpm install
+# atau
+npm install
+```
+
+3. **Jalankan aplikasi dalam mode pengembangan:**
+
+```bash
+pnpm dev
+# atau
+npm run dev
+```
+
+Aplikasi akan berjalan di `http://localhost:3000/` secara default.
+
+---
+
+## 📁 Struktur Proyek
+
+```bash
 .
 ├── 📂 app
 ├── 📂 components/
@@ -50,40 +85,16 @@ Notes:
 ⚛️: related folder
 ```
 
-## File & Folder Naming
+---
 
-- In general, **kebab-case** is prefered for folder & file naming.
-- Use **kebab-case** and **.js** extension for react component file naming.  
-  You can create component file directly like `some-component.js`, or create a folder `some-component/index.js`.
-- Use **kebab-case** and **.spec.js** for test file naming.
+## ✅ Skrip yang Tersedia
 
-## Tools
+- `npm run dev`: Menjalankan aplikasi dalam mode pengembangan.
+- `npm run build`: Membangun aplikasi untuk produksi.
+- `npm run preview`: Menjalankan versi produksi secara lokal.
 
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **UI Component**: [Redix UI](https://www.radix-ui.com/primitives/docs/overview/introduction)
-- **Form Handling**: [React Hook Form](https://react-hook-form.com/)
-- **className Utility**: [clsx](https://www.npmjs.com/package/clsx)
-- **TypeScript Utility**: [Zod](https://zod.dev/?id=installation)
+---
 
-## Naming Conventions
+## 🤝 Kontribusi
 
-- **Variable Name:**
-  - Should be camelCase.
-  - For boolean variable, use "is", "can", or "has" prefix.  
-    Example: `isExpired`, `isDeleted`, `canEditSomething`, `hasSomething`.
-- **Function Name:**
-  - Should be camelCase.
-  - Should starts with verb 1, and don't abbreviate that verb.  
-    ✅ Correct example: `createAccount`, `validateForm`  
-    ❌ Incorrect example: `creatingAccount`, `vldtForm`
-  - For event-handler function, you can use "on" or "handle" prefix.  
-    Example: `onScroll`, `handleScroll`, `onSave`, `handleSave`
-  - For utility function, it is okay for not using verb 1 prefix.  
-    Example: `numeral(...)`, `tooltip(...)`
-- **React Component Name:**
-  - Should be PascalCase.
-  - Page component (components in `app/` folder) name should ends with Page.  
-    Example: `HomePage`.
-  - Higher-Order Component should have "with" prefix.  
-    Example: `withAuth`, `withErrorBoundary`.
-
+Kontribusi sangat diterima! Jika Anda memiliki saran, perbaikan bug, atau fitur baru, silakan buka issue atau pull request.
