@@ -18,20 +18,20 @@ Lihat aplikasi yang berjalan di: [todo-alpha-list.vercel.app](https://todo-alpha
 - **Tailwind CSS + Radix UI**
 - **Zod**
 - **Clsx** (ClassName Utility)
-- **Vercel** (untuk deployment)
+- **Vercel** (for deployment)
 
 ---
 
 ## 📦 Instalasi
 
-1. **Klon repositori:**
+1. **Clone repository:**
 
 ```bash
 git clone https://github.com/fhlevi/todo-app.git
 cd todo-app
 ```
 
-2. **Instal dependensi:**
+2. **Install dependency:**
 
 ```bash
 pnpm install
