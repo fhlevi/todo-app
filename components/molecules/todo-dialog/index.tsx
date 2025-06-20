@@ -58,8 +58,8 @@ export const TodoDialog = ({ dialog, onTodoSubmit, loading }: SchemaProps) => {
           <Button
             className="p-2 text-sm rounded-md text-white"
             disabled={isDisabled || loading}>
-            {loading && <em className="fa-solid fa-circle-notch animate-spin"></em>}
-            <span className="ml-3">{loading ? 'Processing…' : 'Simpan'}</span>
+            {loading && <em className="fa-solid fa-circle-notch animate-spin mr-3"></em>}
+            {loading ? 'Processing…' : 'Simpan'}
           </Button>
         </Flex>
       </form>
