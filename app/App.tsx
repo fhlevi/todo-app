@@ -1,3 +1,5 @@
+import { getTodos } from '@/services/todos';
+import { TodoItemSchema } from '@/types/todo';
 import { Button } from '@components/atoms/button';
 import { Card } from '@components/atoms/card';
 import { Container } from '@components/atoms/container';
@@ -10,36 +12,37 @@ import { TodoList } from '@components/organisms/todo-list';
 import { useDialogWithData } from '@hooks/use-dialog-with-data';
 import { useToasterWithData } from '@hooks/use-toaster';
 import { useTodo } from '@hooks/use-todo';
-import { FieldValues } from 'react-hook-form';
+import { useQuery } from 'react-query';
 
 function App() {
-  const { createTodo, todoList, deleteTodo, updateTodo } = useTodo();
+  const { createTodo, deleteTodo, updateTodo } = useTodo();
+
+  const queryTodo = useQuery(['todo-list'], getTodos);
 
   const addDialog = useDialogWithData();
   const updateDialog = useDialogWithData();
   const toaster = useToasterWithData();
 
-  const onTodoSubmit = (formVal: FieldValues) => {
+  const todoList = queryTodo?.data?.data || [];
+
+  const onTodoSubmit = (formVal: Pick<TodoItemSchema, 'todo'>) => {
     createTodo(formVal, (dates: string) => {
       toaster.open({
         title: 'Todo: was submitted',
         description: dates,
       });
-
+      queryTodo.refetch();
       addDialog.close();
     });
   };
 
-  const onTodoUpdate = (formVal: FieldValues) => {
-    updateTodo({
-        ...updateDialog.data,
-        todo: formVal.todo,
-      }, (dates: string) => {
+  const onTodoUpdate = (formVal: Omit<TodoItemSchema, 'date'>) => {
+    updateTodo(formVal, (dates: string) => {
         toaster.open({
           title: 'Todo: was updated',
           description: dates,
         });
-
+        queryTodo.refetch();
         updateDialog.close();
       },
     );
@@ -51,6 +54,7 @@ function App() {
         title: 'Todo: was deleted',
         description: dates,
       });
+      queryTodo.refetch();
     });
   };
 

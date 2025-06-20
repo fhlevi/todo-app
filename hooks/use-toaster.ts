@@ -30,7 +30,7 @@ export const useToaster = () => {
   };
 };
 
-export const useToasterWithData = (initialData?: FieldValues|undefined) => {
+export const useToasterWithData = (initialData?: FieldValues | undefined) => {
   const modal = useToaster();
   const [modalData, setModalData] = useState(initialData);
 

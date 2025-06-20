@@ -29,6 +29,8 @@
       "@type/*": ["./types/*"],
       "@styles/*": ["./styles/*"],
       "@assets/*": ["./assets/*"],
+      "@config/*": ["./config/*"],
+      "@services/*": ["./services/*"],
     }
   },
   "include": ["app", "vite-env.d.ts", "**/*.ts", "**/*.tsx"]

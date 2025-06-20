@@ -1,82 +1,39 @@
-import { FieldValueScheman, TodoItemSchema } from '@type/todo';
-import { prettyDate } from '@utils/helper';
-import { useEffect, useState } from 'react';
-import { v4 } from 'uuid';
-
-const saveToLocalStorage = (payload: Array<TodoItemSchema>) => {
-  localStorage.setItem('todo-list', JSON.stringify(payload));
-};
+import { CallbackFunction, TodoItemSchema } from '@type/todo';
+import { useMutation } from 'react-query';
+import { createTodoItem, deleteTodoItem, updateTodoItem } from '@services/todos';
 
 export const useTodo = () => {
-  const [todoList, setTodoList] = useState<any[]>([]);
+  const mutationTodo = useMutation(createTodoItem);
+  const mutationUpdateTodo = useMutation(updateTodoItem);
+  const mutationDeleteTodo = useMutation(deleteTodoItem);
 
-  const createTodo = (
-    formVal: FieldValueScheman,
-    callback: (date: string) => void,
-  ) => {
-    const arrPayload: Array<TodoItemSchema> = [...todoList];
-
-    const payload = {
-      todo: formVal.todo,
-      id: v4(),
-      date: prettyDate(new Date()),
-    };
-
-    arrPayload.push(payload);
-
-    saveToLocalStorage(arrPayload);
-    setTodoList(arrPayload);
-    callback(payload.date);
-  };
-
-  const updateTodo = (
-    formVal: FieldValueScheman,
-    callback: (date: string) => void,
-  ) => {
-    const storedTodoList = localStorage.getItem('todo-list');
-    const arrPayload = storedTodoList ? JSON.parse(storedTodoList) : [];
-
-    const index = arrPayload.findIndex(
-      (item: TodoItemSchema) => item.id === formVal.id,
-    );
-
-    if (index !== -1) {
-      arrPayload[index].todo = formVal.todo;
-
-      saveToLocalStorage(arrPayload);
-      setTodoList(arrPayload);
-      callback(arrPayload[index].date);
-    }
-  };
-
-  const deleteTodo = (id: string, callback: (date: string) => void) => {
-    setTodoList((prev: Array<TodoItemSchema>) => {
-      const arrPayload = [...prev];
-      const index = arrPayload.findIndex((item) => item.id === id);
-
-      if (index !== -1) {
-        const date = arrPayload[index].date
-        
-        arrPayload.splice(index, 1);
-
-        saveToLocalStorage(arrPayload);
-        callback(date)
+  const createTodo = (formVal: Pick<TodoItemSchema, 'todo'>, callback: CallbackFunction) => {
+    mutationTodo.mutate(formVal, {
+      onSuccess: ({ data }) => {
+        callback(data.date);
       }
-
-      return arrPayload;
     });
   };
 
-  useEffect(() => {
-    const todos = localStorage.getItem('todo-list');
+  const updateTodo = (formVal: Omit<TodoItemSchema, 'date'>, callback: CallbackFunction) => {
+    mutationUpdateTodo.mutate(formVal, {
+      onSuccess: ({ data }) => {
+        callback(data.date);
+      }
+    })
+  };
 
-    setTodoList(todos ? JSON.parse(todos) : []);
-  }, []);
+  const deleteTodo = (id: string, callback: CallbackFunction) => {
+    mutationDeleteTodo.mutate(id, {
+      onSuccess: ({ data }) => {
+        callback(data.date);
+      }
+    });
+  };
 
   return {
     createTodo,
     updateTodo,
-    todoList,
     deleteTodo,
   };
 };
