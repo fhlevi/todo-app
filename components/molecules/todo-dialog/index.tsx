@@ -9,12 +9,13 @@ import { useEffect } from 'react';
 
 const TodoDialogSchema = z.object({
   dialog: DialogWithData,
+  loading: z.boolean().optional(),
   onTodoSubmit: z.function().args(z.any()),
 });
 
 type SchemaProps = z.infer<typeof TodoDialogSchema>;
 
-export const TodoDialog = ({ dialog, onTodoSubmit }: SchemaProps) => {
+export const TodoDialog = ({ dialog, onTodoSubmit, loading }: SchemaProps) => {
   const { props, data = {} } = dialog;
 
   const { register, handleSubmit, watch, reset } = useForm({
@@ -56,7 +57,8 @@ export const TodoDialog = ({ dialog, onTodoSubmit }: SchemaProps) => {
         <Flex className="mt-8 justify-end">
           <Button
             className="p-2 text-sm rounded-md text-white"
-            disabled={isDisabled}>
+            disabled={isDisabled || loading}>
+            {loading && <em className="fa-solid fa-circle-notch animate-spin"></em>}
             Simpan
           </Button>
         </Flex>

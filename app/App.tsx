@@ -15,7 +15,7 @@ import { useTodo } from '@hooks/use-todo';
 import { useQuery } from 'react-query';
 
 function App() {
-  const { createTodo, deleteTodo, updateTodo } = useTodo();
+  const { createTodo, deleteTodo, updateTodo, loading } = useTodo();
 
   const queryTodo = useQuery(['todo-list'], getTodos);
 
@@ -83,8 +83,19 @@ function App() {
         </Flex>
       </Card>
 
-      <TodoDialog dialog={addDialog} onTodoSubmit={onTodoSubmit} />
-      <TodoDialog dialog={updateDialog} onTodoSubmit={onTodoUpdate} />
+      {/* Popup add todo */}
+      <TodoDialog 
+        dialog={addDialog}
+        loading={loading}
+        onTodoSubmit={onTodoSubmit} 
+      />
+      {/* Popup update todo */}
+      <TodoDialog 
+        dialog={updateDialog} 
+        loading={loading}
+        onTodoSubmit={onTodoUpdate} 
+      />
+      {/* Toaster */}
       <Toaster {...toaster} />
     </Container>
   );

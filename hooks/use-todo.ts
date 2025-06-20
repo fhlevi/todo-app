@@ -35,5 +35,6 @@ export const useTodo = () => {
     createTodo,
     updateTodo,
     deleteTodo,
+    loading: mutationTodo.isLoading || mutationUpdateTodo.isLoading,
   };
 };
