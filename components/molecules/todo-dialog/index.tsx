@@ -59,7 +59,7 @@ export const TodoDialog = ({ dialog, onTodoSubmit, loading }: SchemaProps) => {
             className="p-2 text-sm rounded-md text-white"
             disabled={isDisabled || loading}>
             {loading && <em className="fa-solid fa-circle-notch animate-spin"></em>}
-            Simpan
+            <span className="ml-2">Simpan</span>
           </Button>
         </Flex>
       </form>
