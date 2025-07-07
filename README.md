@@ -7,6 +7,7 @@ Aplikasi Todo yang dibangun dengan React, Vite, dan Tailwind CSS untuk membantu 
 ## 🚀 Demo
 
 Lihat aplikasi yang berjalan di: [todo-alpha-list.vercel.app](https://todo-alpha-list.vercel.app/)
+Lihat API di Swagger: [Swagger](https://todo-alpha-list.leapcell.app/swagger/index.html)
 
 ---
 
