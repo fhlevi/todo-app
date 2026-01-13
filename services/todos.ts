@@ -1,7 +1,7 @@
 import { TodoItemSchema } from '@/types/todo';
 import { HTTPClientNonAuth } from '@config/http';
 
-const prefix = 'todos'
+const prefix = 'todo'
 
 export const getTodos = () => {
     return HTTPClientNonAuth().get(prefix);
